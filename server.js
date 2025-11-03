@@ -3,6 +3,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
 import { loggerService } from './services/logger.service.js';
+import { bugService } from './services/bug.service.js';
 
 const app = express();
 
@@ -16,16 +17,23 @@ app.use(cors(corsOptions));
 app.use(cookieParser());
 
 app.get('/api/bug', async (req, res) => {
-   // Get all bugs
+   res.send(await bugService.query());
 });
 app.get('/api/bug/save', async (req, res) => {
-   // Send bug to backend
+   const { title, severiy } = req.query;
+   res.send(
+      await bugService.save({
+         title: title,
+         severiy: severiy,
+         createadAt: Date.now(),
+      })
+   );
 });
 app.get('/api/bug/:bugId', async (req, res) => {
-   // Get specific bug
+   res.send(await bugService.getById(req.params.bugId));
 });
 app.get('/api/bug/:bugId/remove', async (req, res) => {
-   // Delete specific bug
+   await bugService.remove(req.params.bugId);
 });
 
 const port = 3030;

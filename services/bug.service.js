@@ -1,64 +1,70 @@
-import { makeId, readJsonFile, writeJsonFile } from "./utils.js"
+import { loggerService } from './logger.service.js';
+import { makeId, readJsonFile, writeJsonFile } from './utils.js';
 
-export const carService = {
-    query,
-    getById,
-    remove,
-    save
-}
+export const bugService = {
+   query,
+   getById,
+   remove,
+   save,
+};
 
-const cars = readJsonFile('./data/cars.json')
-
+const bugs = readJsonFile('./data/bugs.json');
 
 async function query(filterBy = {}) {
-    try {
-        return cars
-    } catch (err) {
-        throw err
-    }
+   try {
+      return bugs;
+   } catch (err) {
+      loggerService.error(err);
+      throw err;
+   }
 }
 
-async function getById(carId) {
-    try {
-        const car = cars.find(car => car._id === carId)
-        if (!car) throw new Error('Cannot find car')
-        return car
-    } catch (err) {
-        throw err
-    }
+async function getById(bugId) {
+   try {
+      const bug = bugs.find((bug) => bug._id === bugId);
+      if (!bug) throw new Error('Cannot find bug');
+      return bug;
+   } catch (err) {
+      loggerService.error(err);
+      throw err;
+   }
 }
 
-async function remove(carId) {
-    try {
-
-        const carIdx = cars.findIndex(car => car._id === carId)
-        if (carIdx < 0) throw new Error('Cannot find car')
-        cars.splice(carIdx, 1)
-        await _saveCarsToFile()
-    } catch (err) {
-        throw err
-    }
-
+async function remove(bugId) {
+   try {
+      const bugIdx = bugs.findIndex((bug) => bug._id === bugId);
+      if (bugIdx < 0) throw new Error('Cannot find bug');
+      bugs.splice(bugIdx, 1);
+      await _saveBugsToFile();
+      loggerService.debug('Delete bug success! ', bugId);
+   } catch (err) {
+      loggerService.error(err);
+      throw err;
+   }
 }
 
-async function save(carToSave) {
-    try {
-        if (carToSave._id) {
-            const carIdx = cars.findIndex(car => car._id === carToSave._id)
-            if (carIdx < 0) throw new Error('Cannot find car')
-            cars[carIdx] = carToSave
-        } else {
-            carToSave._id = makeId()
-            cars.push(carToSave)
-        }
-        await _saveCarsToFile()
-        return carToSave
-    } catch (err) {
-        throw err
-    }
+async function save(bugToSave) {
+   try {
+      let logTxt;
+      if (bugToSave._id) {
+         const bugIdx = bugs.findIndex((bug) => bug._id === bugToSave._id);
+         if (bugIdx < 0) throw new Error('Cannot find bug');
+         bugs[bugIdx] = bugToSave;
+         logTxt = 'updated';
+      } else {
+         bugToSave._id = makeId();
+         bugs.push(bugToSave);
+         logTxt = 'created';
+      }
+      await _saveBugsToFile();
+      loggerService.debug(`Bug ${logTxt} - `, bugToSave);
+      return bugToSave;
+   } catch (err) {
+      loggerService.error(err);
+      throw err;
+   }
 }
 
-
-function _saveCarsToFile() {
-    return writeJsonFile('./data/cars.json', cars)
+function _saveBugsToFile() {
+   return writeJsonFile('./data/bugs.json', bugs);
 }
