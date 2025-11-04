@@ -1,5 +1,5 @@
-import { loggerService } from './logger.service.js';
-import { makeId, readJsonFile, writeJsonFile } from './utils.js';
+import { loggerService } from '../../services/logger.service.js';
+import { makeId, readJsonFile, writeJsonFile } from '../../services/utils.js';
 
 export const bugService = {
    query,
