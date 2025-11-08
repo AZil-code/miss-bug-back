@@ -10,8 +10,19 @@ export const bugService = {
 
 const bugs = readJsonFile('./data/bugs.json');
 
-async function query(filterBy = {}) {
+async function query(filterBy = {}, sortBy = {}) {
    try {
+      if (sortBy.sortBy && bugs.length > 1) {
+         const { sortBy: sortField, sortDir } = sortBy;
+         switch (typeof bugs[0][sortField]) {
+            case 'string':
+               bugs.sort((a, b) => sortDir * a[sortField].localeCompare(b[sortField]));
+               break;
+            case 'number':
+               bugs.sort((a, b) => sortDir * (a[sortField] - b[sortField]));
+               break;
+         }
+      }
       return bugs;
    } catch (err) {
       loggerService.error(err);

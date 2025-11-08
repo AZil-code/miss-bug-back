@@ -2,7 +2,8 @@ import { loggerService } from '../../services/logger.service.js';
 import { bugService } from './bug.service.js';
 
 export async function getBugs(req, res) {
-   res.send(await bugService.query());
+   const sortBy = { sortBy: req.query.sortBy, sortDir: req.query.sortDir || 1 };
+   res.send(await bugService.query({}, sortBy));
 }
 
 export async function createBug(req, res) {
