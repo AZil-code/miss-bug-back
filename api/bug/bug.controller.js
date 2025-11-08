@@ -6,25 +6,27 @@ export async function getBugs(req, res) {
 }
 
 export async function createBug(req, res) {
-   const { title, severiy } = req.body;
+   const { title, severity, description } = req.body;
    console.log(req.body);
    res.send(
       await bugService.save({
          title: title,
          severity: severity,
+         description,
          createadAt: Date.now(),
       })
    );
 }
 
 export async function updateBug(req, res) {
-   const { title, severity: severity } = req.body;
+   const { title, severity, description } = req.body;
    const { bugId } = req.params;
    res.send(
       await bugService.save({
          _id: bugId,
          title: title,
          severity: severity,
+         description,
       })
    );
 }
