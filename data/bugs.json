@@ -1,31 +1,72 @@
 [
     {
-        "_id": "c103",
-        "title": "toyoyo",
-        "severity": 0
+        "_id": "A1X9K2",
+        "title": "Login Failure",
+        "severity": 0,
+        "description": "User cannot log in under certain network conditions",
+        "createdAt": 1645107959454
     },
     {
-        "_id": "c104",
-        "title": "posh",
+        "_id": "P4L7Q8",
+        "title": "Memory Leak",
         "severity": 4,
-        "createdAt": 1542107959454
+        "description": "Memory usage increases continuously during long-running sessions",
+        "createdAt": 1622107359454
     },
     {
-        "_id": "8e7Jmy",
-        "title": "Bimba",
+        "_id": "T9B2LM",
+        "title": "Data Sync Delay",
         "severity": 2,
-        "createdAt": 1342107359454
+        "description": "Sync operations take longer than expected on low bandwidth networks",
+        "createdAt": 1583107359454
     },
     {
-        "title": "API",
-        "severity": 5,
-        "createadAt": 1762367601078,
-        "_id": "FP337M"
-    },
-    {
-        "_id": "Q29e6v",
-        "title": "My bug",
+        "_id": "F2L9QK",
+        "title": "Button Misalignment",
         "severity": 1,
-        "description": "New Descrit"
+        "description": "Main CTA button misaligned on small screen devices",
+        "createdAt": 1702107859454
+    },
+    {
+        "_id": "LLA883",
+        "title": "Database Timeout",
+        "severity": 5,
+        "description": "Database request latency exceeds timeout during traffic spikes",
+        "createdAt": 1862367601078
+    },
+    {
+        "_id": "W09DPD",
+        "title": "API Rate Limit",
+        "severity": 3,
+        "description": "Requests are being throttled due to incorrect rate configuration",
+        "createdAt": 1512107859454
+    },
+    {
+        "_id": "KP3V0N",
+        "title": "Missing Notifications",
+        "severity": 2,
+        "description": "Push notifications not delivered to some iOS users",
+        "createdAt": 1652107959454
+    },
+    {
+        "_id": "Q7N1HS",
+        "title": "Form Submission Error",
+        "severity": 4,
+        "description": "Form validation fails when optional fields are provided",
+        "createdAt": 1602107959454
+    },
+    {
+        "_id": "JX3CM4",
+        "title": "Search Index Stale",
+        "severity": 1,
+        "description": "Search engine index is not updating after data inserts",
+        "createdAt": 1492107359454
+    },
+    {
+        "_id": "R220BM",
+        "title": "UI Theme Mismatch",
+        "severity": 3,
+        "description": "Some controls do not apply dark mode colors correctly",
+        "createdAt": 1462107359454
     }
 ]

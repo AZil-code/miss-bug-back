@@ -9,21 +9,41 @@ export const bugService = {
 };
 
 const bugs = readJsonFile('./data/bugs.json');
+const PAGE_SIZE = 4;
 
 async function query(filterBy = {}, sortBy = {}) {
+   let bugsToDisplay = bugs;
    try {
-      if (sortBy.sortBy && bugs.length > 1) {
+      if (filterBy.title) {
+         const regExp = new RegExp(filterBy.title, 'i');
+         bugsToDisplay = bugsToDisplay.filter((bug) => regExp.test(bug.title));
+      }
+      if (filterBy.description) {
+         const regExp = new RegExp(filterBy.description, 'i');
+         bugsToDisplay = bugsToDisplay.filter((bug) => regExp.test(bug.description));
+      }
+      if (filterBy.severity != null && filterBy.severity >= 0) {
+         bugsToDisplay = bugsToDisplay.filter((bug) => bug.severity >= filterBy.severity);
+      }
+
+      if (sortBy.sortBy && bugsToDisplay.length > 1) {
          const { sortBy: sortField, sortDir } = sortBy;
-         switch (typeof bugs[0][sortField]) {
+         switch (typeof bugsToDisplay[0][sortField]) {
             case 'string':
-               bugs.sort((a, b) => sortDir * a[sortField].localeCompare(b[sortField]));
+               bugsToDisplay.sort((a, b) => sortDir * a[sortField].localeCompare(b[sortField]));
                break;
             case 'number':
-               bugs.sort((a, b) => sortDir * (a[sortField] - b[sortField]));
+               bugsToDisplay.sort((a, b) => sortDir * (a[sortField] - b[sortField]));
                break;
          }
       }
-      return bugs;
+
+      if ('pageIdx' in filterBy) {
+         const startIdx = filterBy.pageIdx * PAGE_SIZE;
+         bugsToDisplay = bugsToDisplay.slice(startIdx, startIdx + PAGE_SIZE);
+      }
+
+      return bugsToDisplay;
    } catch (err) {
       loggerService.error(err);
       throw err;
