@@ -4,6 +4,10 @@
         "title": "Login Failure",
         "severity": 0,
         "description": "User cannot log in under certain network conditions",
+        "creator": {
+            "_id": "IN24fZ",
+            "fullname": "Bibby Pac"
+        },
         "createdAt": 1645107959454
     },
     {
@@ -11,6 +15,10 @@
         "title": "Memory Leak",
         "severity": 4,
         "description": "Memory usage increases continuously during long-running sessions",
+        "creator": {
+            "_id": "IN24fZ",
+            "fullname": "Bibby Pac"
+        },
         "createdAt": 1622107359454
     },
     {
@@ -18,6 +26,10 @@
         "title": "Data Sync Delay",
         "severity": 2,
         "description": "Sync operations take longer than expected on low bandwidth networks",
+        "creator": {
+            "_id": "IN24fZ",
+            "fullname": "Bibby Pac"
+        },
         "createdAt": 1583107359454
     },
     {
@@ -25,6 +37,10 @@
         "title": "Button Misalignment",
         "severity": 1,
         "description": "Main CTA button misaligned on small screen devices",
+        "creator": {
+            "_id": "IN24fZ",
+            "fullname": "Bibby Pac"
+        },
         "createdAt": 1702107859454
     },
     {
@@ -32,6 +48,10 @@
         "title": "Database Timeout",
         "severity": 5,
         "description": "Database request latency exceeds timeout during traffic spikes",
+        "creator": {
+            "_id": "IN24fZ",
+            "fullname": "Bibby Pac"
+        },
         "createdAt": 1862367601078
     },
     {
@@ -39,6 +59,10 @@
         "title": "API Rate Limit",
         "severity": 3,
         "description": "Requests are being throttled due to incorrect rate configuration",
+        "creator": {
+            "_id": "IN24fZ",
+            "fullname": "Bibby Pac"
+        },
         "createdAt": 1512107859454
     },
     {
@@ -46,6 +70,10 @@
         "title": "Missing Notifications",
         "severity": 2,
         "description": "Push notifications not delivered to some iOS users",
+        "creator": {
+            "_id": "IN24fZ",
+            "fullname": "Bibby Pac"
+        },
         "createdAt": 1652107959454
     },
     {
@@ -53,6 +81,10 @@
         "title": "Form Submission Error",
         "severity": 4,
         "description": "Form validation fails when optional fields are provided",
+        "creator": {
+            "_id": "IN24fZ",
+            "fullname": "Bibby Pac"
+        },
         "createdAt": 1602107959454
     },
     {
@@ -60,6 +92,10 @@
         "title": "Search Index Stale",
         "severity": 1,
         "description": "Search engine index is not updating after data inserts",
+        "creator": {
+            "_id": "IN24fZ",
+            "fullname": "Bibby Pac"
+        },
         "createdAt": 1492107359454
     },
     {
@@ -67,6 +103,21 @@
         "title": "UI Theme Mismatch",
         "severity": 3,
         "description": "Some controls do not apply dark mode colors correctly",
+        "creator": {
+            "_id": "IN24fZ",
+            "fullname": "Bibby Pac"
+        },
         "createdAt": 1462107359454
+    },
+    {
+        "title": "User",
+        "severity": 2,
+        "description": "From user",
+        "creator": {
+            "_id": "IN24fZ",
+            "fullname": "Bibby Pac"
+        },
+        "createadAt": 1763497057323,
+        "_id": "9ul0q0"
     }
 ]

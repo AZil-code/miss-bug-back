@@ -54,7 +54,7 @@ async function getByUsername(username) {
    try {
       const user = users.find((user) => user.username === username);
       if (!user) throw new Error('Cannot find user');
-      return user;
+      return { _id: user._id, username: user.username, fullname: user.fullname };
    } catch (err) {
       loggerService.error(err);
    }

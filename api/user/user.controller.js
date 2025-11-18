@@ -35,10 +35,19 @@ export async function updateUser(req, res) {
    );
 }
 
-export async function getUserById(req, res) {
-   const { userId } = req.params;
+// export async function getUserById(req, res) {
+//    const { userId } = req.params;
+//    try {
+//       res.send(await userService.getById(userId));
+//    } catch (err) {
+//       loggerService.error('Cannot get user', err);
+//       res.status(404).send('Cannot get user');
+//    }
+// }
+export async function getUser(req, res) {
+   const { username } = req.params;
    try {
-      res.send(await userService.getById(userId));
+      res.send(await userService.getByUsername(username));
    } catch (err) {
       loggerService.error('Cannot get user', err);
       res.status(404).send('Cannot get user');
