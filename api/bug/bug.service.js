@@ -74,8 +74,6 @@ async function remove(bugId, loggedinUser) {
 }
 
 async function save(bugToSave, loggedinUser) {
-   console.log(loggedinUser);
-   console.log(bugToSave);
    let newBug;
    try {
       const collection = await dbService.getCollection(DB_NAME);
@@ -87,9 +85,11 @@ async function save(bugToSave, loggedinUser) {
             { _id: ObjectId.createFromHexString(bugToSave._id) },
             { $set: { title, description, severity } }
          );
+         newBug = await collection.findOne({ _id: ObjectId.createFromHexString(bugToSave._id) });
          logTxt = 'updated';
       } else {
-         newBug = await collection.insertOne(bugToSave);
+         const result = await collection.insertOne(bugToSave);
+         newBug = await collection.findOne({ _id: result.insertedId });
          logTxt = 'created';
       }
       loggerService.debug(`Bug ${logTxt} - `, bugToSave);

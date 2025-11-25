@@ -6,6 +6,7 @@ import { loggerService } from './services/logger.service.js';
 import { bugRoutes } from './api/bug/bug.router.js';
 import { userRoutes } from './api/user/user.router.js';
 import { authRoutes } from './api/auth/auth.routes.js';
+import { msgRoutes } from './api/msg/msg.router.js';
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use('/api/bug', bugRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/msg', msgRoutes);
 
 const port = 3030;
 app.listen(port, () => {
